@@ -20,19 +20,8 @@ type LoginPayload {
   user: User
 }
 
-# type UserInputError {
-#   message: String
-#   code: Int
-#   fieldPath: [String!]
-# }
-
 type CreateProductPayload {
   product: Product
-  # errors: [UserInputError!]
-}
-
-type AddProductToCartPayload {
-  cartItems: [CartItem]
 }
 
 input LoginInput {
@@ -51,17 +40,11 @@ input CreateProductInput {
   image: CreateProductImageInput
 }
 
-input AddProductToCartInput {
-  productId: ID!
-  amount: Int
-}
-
 type Query {
-  products(limit: Int): [Product] @cost(complexity: 1, multipliers: ["limit"])
+  products(limit: Int): [Product]
 }
 
 type Mutation {
   createProduct(input: CreateProductInput!): CreateProductPayload
-  addProductToCart(input: AddProductToCartInput!): AddProductToCartPayload
-  login(input: LoginInput!): LoginPayload @cost(complexity: 300)
+  login(input: LoginInput!): LoginPayload
 }
