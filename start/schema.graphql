@@ -1,0 +1,67 @@
+directive @cost(complexity: Int, multipliers: [String!]) on FIELD_DEFINITION
+
+type User {
+  id: ID!
+  email: String!
+}
+
+type CartItem {
+  amount: Int
+  product: Product
+}
+
+type Product {
+  id: ID!
+  name: String
+}
+
+type LoginPayload {
+  token: String
+  user: User
+}
+
+# type UserInputError {
+#   message: String
+#   code: Int
+#   fieldPath: [String!]
+# }
+
+type CreateProductPayload {
+  product: Product
+  # errors: [UserInputError!]
+}
+
+type AddProductToCartPayload {
+  cartItems: [CartItem]
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input CreateProductImageInput {
+  url: String!
+  description: String!
+}
+
+input CreateProductInput {
+  name: String!
+  description: String
+  image: CreateProductImageInput
+}
+
+input AddProductToCartInput {
+  productId: ID!
+  amount: Int
+}
+
+type Query {
+  products(limit: Int): [Product] @cost(complexity: 1, multipliers: ["limit"])
+}
+
+type Mutation {
+  createProduct(input: CreateProductInput!): CreateProductPayload
+  addProductToCart(input: AddProductToCartInput!): AddProductToCartPayload
+  login(input: LoginInput!): LoginPayload @cost(complexity: 300)
+}
