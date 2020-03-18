@@ -24,9 +24,15 @@ mutation {
 }
 ```
 
-8ef3f2b8-c884-4dcf-a1c7-5ff9cbd0adab
-
 ## Mutation
+
+Relay rules:
+
+1. Mutations are named as verbs `createProduct`, `introduceShip`, `deleteCollection`.
+2. Single argument input
+3. The input type name is the capitalized mutation name with a `Input` postfix e.g. `CreateProductInput`, `IntroduceShipInput`.
+4. The returned value is a new custom type that can contain various fields.
+5. The return type is name is the capitalized mutation name with a `Payload` postfix e.g. `CreateProductPayload`, `IntroduceShipPayload`.
 
 createdProduct
 
