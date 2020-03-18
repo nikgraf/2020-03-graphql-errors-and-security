@@ -34,6 +34,8 @@ Relay rules:
 4. The returned value is a new custom type that can contain various fields.
 5. The return type is name is the capitalized mutation name with a `Payload` postfix e.g. `CreateProductPayload`, `IntroduceShipPayload`.
 
+Source: https://relay.dev/docs/en/next/graphql-server-specification#mutations
+
 createdProduct
 
 ```graphql
