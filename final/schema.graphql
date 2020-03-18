@@ -40,15 +40,8 @@ input LoginInput {
   password: String!
 }
 
-input CreateProductImageInput {
-  url: String!
-  description: String!
-}
-
 input CreateProductInput {
   name: String!
-  description: String
-  image: CreateProductImageInput
 }
 
 input AddProductToCartInput {
