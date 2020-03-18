@@ -8,6 +8,9 @@ module.exports = {
   Mutation: {
     login: (_parent, args) => {
       return login(args.input.email, args.input.password);
+    },
+    addProductToCart: (_parent, args) => {
+      return { amount: args.input.amount };
     }
   }
 };

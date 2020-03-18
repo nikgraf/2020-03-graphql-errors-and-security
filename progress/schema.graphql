@@ -40,6 +40,15 @@ input CreateProductInput {
   image: CreateProductImageInput
 }
 
+input AddProductToCartInput {
+  productId: ID!
+  amount: Int!
+}
+
+type AddProductToCartPayload {
+  amount: Int
+}
+
 type Query {
   products(limit: Int): [Product]
 }
@@ -47,4 +56,5 @@ type Query {
 type Mutation {
   createProduct(input: CreateProductInput!): CreateProductPayload
   login(input: LoginInput!): LoginPayload
+  addProductToCart(input: AddProductToCartInput!): AddProductToCartPayload
 }
