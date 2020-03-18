@@ -12,8 +12,8 @@ class CostAnalysisApolloServer extends ApolloServer {
       costAnalysis({
         variables: req.body.variables,
         maximumCost: 400,
-        defaultCost: 1
-        // onComplete: costs => console.log(`costs: ${costs} (max: 1234)`)
+        defaultCost: 1,
+        onComplete: costs => console.log(`costs: ${costs} (max: 400)`)
       })
     );
 

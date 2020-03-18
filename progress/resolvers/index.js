@@ -14,7 +14,13 @@ module.exports = {
     login: (_parent, args, context) => {
       return login(args.input.email, args.input.password);
     },
-    addProductToCart: (_parent, args) => {
+    addProductToCart: (_parent, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError(
+          "User must be logged in to add a Product to the Cart."
+        );
+      }
+
       const product = getProduct(args.input.productId);
       if (!product) {
         throw new UserInputError("Product doesn't exist", {
