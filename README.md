@@ -111,7 +111,12 @@ if (args.input.name.length < 3) {
 
 - createProduct (product name must have at least 3 characters)
 
-Exercise: addToCard (can't add more to the cart than stock of the product)
+Exercise: Throw UserInputError errors
+
+- verfiy product for productId exists -> if not UserInputError
+- verfiy amount is smaller than the product stock -> if not UserInputError
+
+Hint: use `const { getProduct } = require("../db/products");` to retrieve the actual product.
 
 ## Secure an Endpoint (authentication & authorization)
 
